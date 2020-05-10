@@ -9,6 +9,7 @@ Vagrant.configure("2") do |config|
   config.vm.box = "hashicorp/bionic64"
   config.vm.provision :shell, path: "bootstrap.sh"
   config.vm.network :forwarded_port, guest: 80, host: 7000
+  config.vm.synced_folder ".", "/var/www", :mount_options => ["dmode=777", "fmode=777"]
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
